@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-// 1. Ubah import-nya ke file tugas 5 kamu
-import 'tugas5.dart';
+// 1. Ubah baris ini untuk memanggil file halaman_login.dart yang baru
+import 'halaman_login.dart';
 
 void main() {
   runApp(const ChizilishiApp());
@@ -18,8 +18,8 @@ class ChizilishiApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.pink),
         useMaterial3: true,
       ),
-      // 2. Memanggil class Utama dari Tugas 5
-      home: const InteraktifPage(),
+      // 2. Di sini perubahannya, panggil kelas LinkedInLoginPage dari file baru tersebut
+      home: const LinkedInLoginPage(),
     );
   }
 }

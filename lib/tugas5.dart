@@ -48,7 +48,7 @@ class _InteraktifPageState extends State<InteraktifPage> {
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: const Text(
-                  'Halo, Kak Karina Aespa! 👋\nKelola jadwal tim & invoice MUA jadi lebih mudah.',
+                  'Halo, Karina Aespa! 👋\nKelola jadwal tim & invoice MUA jadi lebih mudah.',
                   style: TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.w500,
@@ -58,8 +58,18 @@ class _InteraktifPageState extends State<InteraktifPage> {
               ),
               const SizedBox(height: 24),
 
+              // LOGO
+              Center(
+                child: Image.asset(
+                  'assets/images/kaeri.png',
+                  height: 200,
+                  fit: BoxFit.contain,
+                ),
+              ),
+              const SizedBox(height: 24),
+
               const Text(
-                'Manajemen Studio (ElevatedButton)',
+                'Manajemen Studio',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 14,
@@ -123,7 +133,7 @@ class _InteraktifPageState extends State<InteraktifPage> {
               const SizedBox(height: 16),
 
               const Text(
-                'Sistem Invoice (IconButton & TextButton)',
+                'Sistem Invoice',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 14,
@@ -151,7 +161,6 @@ class _InteraktifPageState extends State<InteraktifPage> {
                               fontSize: 15,
                             ),
                           ),
-                          // ICON BUTTON (Warna)
                           IconButton(
                             icon: Icon(
                               Icons.bookmark,
@@ -178,7 +187,6 @@ class _InteraktifPageState extends State<InteraktifPage> {
                         ),
                       ),
                       const Divider(height: 24),
-                      // TEXT BUTTON (Informasi selipan)
                       TextButton.icon(
                         style: TextButton.styleFrom(
                           foregroundColor: Colors.pink,
@@ -208,7 +216,6 @@ class _InteraktifPageState extends State<InteraktifPage> {
               ),
               const SizedBox(height: 16),
 
-              // INKWELL
               const Text(
                 'Kalender Tim & Jadwal (InkWell)',
                 style: TextStyle(
@@ -219,14 +226,14 @@ class _InteraktifPageState extends State<InteraktifPage> {
               ),
               const SizedBox(height: 8),
               Card(
-                clipBehavior: Clip
-                    .antiAlias, // Properti splash gitu lah - biar efeknya keliatan di seluruh area card
+                clipBehavior: Clip.antiAlias,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: InkWell(
                   onTap: () {
                     print('Sentuhan terdeteksi');
+                    // Perbaikan posisi tanda kurung & titik koma di sini
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(
                         content: Text(
@@ -274,7 +281,6 @@ class _InteraktifPageState extends State<InteraktifPage> {
               ),
               const SizedBox(height: 16),
 
-              // gesture detector yang di tap-tap, double tap, dan long press
               const Text(
                 'Kebutuhan Tambahan Crew (GestureDetector)',
                 style: TextStyle(
@@ -349,8 +355,6 @@ class _InteraktifPageState extends State<InteraktifPage> {
           ),
         ),
       ),
-
-      // tombol ngambang
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           setState(() {
