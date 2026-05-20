@@ -1,371 +1,331 @@
 import 'package:flutter/material.dart';
 
-class InteraktifPage extends StatefulWidget {
-  const InteraktifPage({super.key});
-
-  @override
-  State<InteraktifPage> createState() => _InteraktifPageState();
+void main() {
+  runApp(const KaeriApp());
 }
 
-class _InteraktifPageState extends State<InteraktifPage> {
-  // 1. Toggle Teks Rahasia -> Catatan Admin
-  bool _showSecretText = false;
+class KaeriApp extends StatelessWidget {
+  const KaeriApp({super.key});
 
-  // 2. Ubah Warna -> Pin/Favoritkan Invoice
-  bool _isFavorited = false;
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Kaeri Workspace',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color(0xFFF2A294),
+          primary: const Color(0xFFD68A7C),
+          surface: const Color(0xFFF9F9F9),
+          onPrimary: Colors.white,
+        ),
+        textTheme: const TextTheme(
+          displayLarge: TextStyle(
+            color: Color(0xFFF2A294),
+            fontWeight: FontWeight.bold,
+            letterSpacing: 4.0,
+          ),
+          headlineMedium: TextStyle(
+            color: Color(0xFF333333),
+            fontWeight: FontWeight.w600,
+          ),
+          bodyMedium: TextStyle(color: Color(0xFF666666)),
+        ),
+      ),
+      home: const KaeriLoginPage(),
+    );
+  }
+}
 
-  // 3. Deskripsi Tersembunyi -> Aturan Pembatalan MUA
-  bool _showMoreInfo = false;
-
-  // 5 & 6. Counter -> Slot Tambahan Asisten MUA
-  int _counter = 10;
+// Nama class diubah menjadi KaeriLoginPage agar tidak bentrok dengan tugas 6
+class KaeriLoginPage extends StatelessWidget {
+  const KaeriLoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: const Text(
-          'Kaeri MUA Workspace',
-          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black87),
-        ),
-        centerTitle: true,
-        backgroundColor: Colors.pink.shade50,
-        elevation: 0,
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Welcome Banner
-              Container(
-                width: double.infinity,
-                padding: const EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  color: Colors.pink.shade50.withOpacity(0.5),
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: const Text(
-                  'Halo, Karina Aespa! 👋\nKelola jadwal tim & invoice MUA jadi lebih mudah.',
-                  style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.pink,
+      body: Stack(
+        children: [
+          Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [
+                  Color(0xFFFDF4F2),
+                  Color(0xFFF9F9F9),
+                  Color(0xFFF2F2F2),
+                ],
+              ),
+            ),
+          ),
+          SafeArea(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.symmetric(horizontal: 10.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const SizedBox(height: 3),
+                  Image.asset('assets/images/kaeri.png', height: 150),
+                  const SizedBox(height: 5),
+                  const SizedBox(height: 8),
+                  Text(
+                    'WORKSPACE',
+                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                      letterSpacing: 2.0,
+                      fontWeight: FontWeight.w500,
+                      color: const Color(0xFF8C4D42),
+                    ),
                   ),
-                ),
-              ),
-              const SizedBox(height: 24),
-
-              // LOGO
-              Center(
-                child: Image.asset(
-                  'assets/images/kaeri.png',
-                  height: 200,
-                  fit: BoxFit.contain,
-                ),
-              ),
-              const SizedBox(height: 24),
-
-              const Text(
-                'Manajemen Studio',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 14,
-                  color: Colors.black54,
-                ),
-              ),
-              const SizedBox(height: 8),
-              Card(
-                elevation: 2,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
-                        'Aksi Utama Admin',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                        ),
-                      ),
-                      const SizedBox(height: 8),
-                      ElevatedButton.icon(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.pink,
-                          foregroundColor: Colors.white,
-                        ),
-                        onPressed: () {
-                          setState(() {
-                            _showSecretText = !_showSecretText;
-                          });
-                        },
-                        icon: const Icon(Icons.security),
-                        label: const Text('Buka Catatan Rahasia Admin'),
-                      ),
-                      if (_showSecretText) ...[
-                        const SizedBox(height: 12),
-                        Container(
-                          padding: const EdgeInsets.all(12),
-                          decoration: BoxDecoration(
-                            color: Colors.amber.shade50,
-                            borderRadius: BorderRadius.circular(8),
-                            border: Border.all(color: Colors.amber.shade200),
-                          ),
-                          child: const Text(
-                            'Halo, saya kuncen access!\nKode Brankas Kas Studio: 99X-Chizilishi',
-                            style: TextStyle(
-                              color: Colors.amber,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ],
+                  const SizedBox(height: 4),
+                  Text(
+                    'Welcome back, Artist.',
+                    textAlign: TextAlign.center,
+                    style: Theme.of(
+                      context,
+                    ).textTheme.headlineMedium?.copyWith(fontSize: 28),
                   ),
-                ),
-              ),
-              const SizedBox(height: 16),
-
-              const Text(
-                'Sistem Invoice',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 14,
-                  color: Colors.black54,
-                ),
-              ),
-              const SizedBox(height: 8),
-              Card(
-                elevation: 2,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Text(
-                            'Invoice #INV-2026-001\nKlien: Anya (Wedding Gold)',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15,
-                            ),
-                          ),
-                          IconButton(
-                            icon: Icon(
-                              Icons.bookmark,
-                              color: _isFavorited
-                                  ? Colors.pink
-                                  : Colors.grey.shade400,
-                              size: 28,
-                            ),
-                            onPressed: () {
-                              setState(() {
-                                _isFavorited = !_isFavorited;
-                              });
-                            },
-                          ),
-                        ],
-                      ),
-                      Text(
-                        _isFavorited
-                            ? 'Status: Invoice Prioritas Utama (Disukai!)'
-                            : 'Status: Regular',
-                        style: TextStyle(
-                          color: _isFavorited ? Colors.pink : Colors.grey,
-                          fontSize: 13,
-                        ),
-                      ),
-                      const Divider(height: 24),
-                      TextButton.icon(
-                        style: TextButton.styleFrom(
-                          foregroundColor: Colors.pink,
-                        ),
-                        onPressed: () {
-                          setState(() {
-                            _showMoreInfo = !_showMoreInfo;
-                          });
-                        },
-                        icon: Icon(
-                          _showMoreInfo ? Icons.expand_less : Icons.expand_more,
-                        ),
-                        label: const Text(
-                          'Lihat Aturan Kebijakan Pembatalan MUA',
-                        ),
-                      ),
-                      if (_showMoreInfo) ...[
-                        const SizedBox(height: 8),
-                        const Text(
-                          'Kebijakan: DP tidak dapat dikembalikan jika pembatalan sepihak dilakukan H-7 acara.',
-                          style: TextStyle(color: Colors.black, fontSize: 13),
-                        ),
-                      ],
-                    ],
+                  const SizedBox(height: 12),
+                  const Text(
+                    'Please sign in to your studio dashboard.',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Color(0xFF666666), fontSize: 16),
                   ),
-                ),
-              ),
-              const SizedBox(height: 16),
-
-              const Text(
-                'Kalender Tim & Jadwal (InkWell)',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 14,
-                  color: Colors.black54,
-                ),
-              ),
-              const SizedBox(height: 8),
-              Card(
-                clipBehavior: Clip.antiAlias,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: InkWell(
-                  onTap: () {
-                    print('Sentuhan terdeteksi');
-                    // Perbaikan posisi tanda kurung & titik koma di sini
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text(
-                          'Jadwal Ningning Anya diupdate: 15 Nov 2026, Tim B',
-                        ),
-                        duration: Duration(seconds: 1),
+                  const SizedBox(height: 30),
+                  const CustomTextFieldTugas5(
+                    label: 'Email Address',
+                    hintText: 'name@artistry.com',
+                  ),
+                  const SizedBox(height: 24),
+                  const CustomTextFieldTugas5(
+                    label: 'Password',
+                    hintText: '••••••••',
+                    isPassword: true,
+                    suffixIcon: Icons.visibility_off_outlined,
+                  ),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: TextButton(
+                      onPressed: () {},
+                      child: const Text(
+                        'Forgot Password?',
+                        style: TextStyle(color: Color(0xFF666666)),
                       ),
-                    );
-                  },
-                  child: Container(
+                    ),
+                  ),
+                  const SizedBox(height: 32),
+                  Container(
                     width: double.infinity,
-                    padding: const EdgeInsets.all(16),
-                    color: Colors.pink.shade50.withOpacity(0.3),
-                    child: Row(
-                      children: [
-                        Container(width: 4, height: 40, color: Colors.pink),
-                        const SizedBox(width: 12),
-                        const Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Jadwal Makeup: Akad Nikah Anya',
-                                style: TextStyle(fontWeight: FontWeight.bold),
-                              ),
-                              Text(
-                                '15 November 2026 • Assigned: Tim B',
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  color: Colors.black54,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        const Icon(
-                          Icons.arrow_forward_ios,
-                          size: 14,
-                          color: Colors.black38,
+                    height: 56,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(28),
+                      gradient: const LinearGradient(
+                        colors: [Color(0xFFD68A7C), Color(0xFFE5A195)],
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: const Color(0xFFD68A7C).withOpacity(0.3),
+                          blurRadius: 12,
+                          offset: const Offset(0, 4),
                         ),
                       ],
                     ),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 16),
-
-              const Text(
-                'Kebutuhan Tambahan Crew (GestureDetector)',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 14,
-                  color: Colors.black54,
-                ),
-              ),
-              const SizedBox(height: 8),
-              Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    children: [
-                      Text(
-                        'GestureDetector - Angka Slot Asisten: $_counter',
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 15,
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.transparent,
+                        shadowColor: Colors.transparent,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(28),
                         ),
                       ),
-                      const SizedBox(height: 12),
-                      GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            _counter += 1;
-                          });
-                          print('Ditekan sekali');
-                        },
-                        onDoubleTap: () {
-                          setState(() {
-                            _counter += 2;
-                          });
-                          print('Ditekan dua kali');
-                        },
-                        onLongPress: () {
-                          setState(() {
-                            _counter += 3;
-                          });
-                          print('Tahan lama');
-                        },
-                        child: Container(
-                          width: double.infinity,
-                          padding: const EdgeInsets.all(20),
-                          decoration: BoxDecoration(
-                            color: Colors.blue.shade50,
-                            borderRadius: BorderRadius.circular(8),
-                            border: Border.all(color: Colors.blue.shade100),
+                      child: const Text(
+                        'Login',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 40),
+                  Row(
+                    children: [
+                      Expanded(child: Divider(color: Colors.grey.shade300)),
+                      const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 16),
+                        child: Text(
+                          'OR CONTINUE WITH',
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.grey,
+                            fontWeight: FontWeight.w600,
                           ),
-                          child: const Center(
-                            child: Text(
-                              '[Ketuk Kotak Ini untuk Atur Slot Crew]\n1x Tap (+1) | 2x Tap (+2) | Tahan Lama (+3)',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Colors.blueAccent,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 12,
-                              ),
-                            ),
+                        ),
+                      ),
+                      Expanded(child: Divider(color: Colors.grey.shade300)),
+                    ],
+                  ),
+                  const SizedBox(height: 32),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const SocialButtonTugas5(
+                        icon: Icons.g_mobiledata,
+                        label: 'Google',
+                      ),
+                      const SizedBox(width: 16),
+                      const SocialButtonTugas5(
+                        icon: Icons.face_retouching_natural,
+                        label: '',
+                        isCircle: true,
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 48),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text(
+                        "Don't have an account? ",
+                        style: TextStyle(color: Color(0xFF666666)),
+                      ),
+                      GestureDetector(
+                        onTap: () {},
+                        child: const Text(
+                          'Sign Up',
+                          style: TextStyle(
+                            color: Color(0xFF8C4D42),
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                       ),
                     ],
                   ),
-                ),
+                  const SizedBox(height: 40),
+                ],
               ),
-              const SizedBox(height: 60),
-            ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class CustomTextFieldTugas5 extends StatelessWidget {
+  final String label;
+  final String hintText;
+  final bool isPassword;
+  final IconData? suffixIcon;
+
+  const CustomTextFieldTugas5({
+    super.key,
+    required this.label,
+    required this.hintText,
+    this.isPassword = false,
+    this.suffixIcon,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          label,
+          style: const TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.w600,
+            color: Color(0xFF333333),
           ),
         ),
+        const SizedBox(height: 8),
+        TextField(
+          obscureText: isPassword,
+          decoration: InputDecoration(
+            hintText: hintText,
+            hintStyle: TextStyle(color: Colors.grey.shade400),
+            filled: true,
+            fillColor: Colors.white.withOpacity(0.5),
+            contentPadding: const EdgeInsets.symmetric(
+              horizontal: 16,
+              vertical: 16,
+            ),
+            suffixIcon: suffixIcon != null
+                ? Icon(suffixIcon, color: Colors.grey)
+                : null,
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8),
+              borderSide: BorderSide(color: Colors.grey.shade200),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8),
+              borderSide: BorderSide(color: Colors.grey.shade200),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8),
+              borderSide: const BorderSide(
+                color: Color(0xFFF2A294),
+                width: 1.5,
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class SocialButtonTugas5 extends StatelessWidget {
+  final IconData icon;
+  final String label;
+  final bool isCircle;
+
+  const SocialButtonTugas5({
+    super.key,
+    required this.icon,
+    required this.label,
+    this.isCircle = false,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(isCircle ? 12 : 0),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        shape: isCircle ? BoxShape.circle : BoxShape.rectangle,
+        borderRadius: isCircle ? null : BorderRadius.circular(24),
+        border: Border.all(color: Colors.grey.shade100),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.02),
+            blurRadius: 8,
+            offset: const Offset(0, 2),
+          ),
+        ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            _counter--;
-          });
-        },
-        backgroundColor: Colors.pink,
-        foregroundColor: Colors.white,
-        tooltip: 'Kurangi Slot Crew',
-        child: const Icon(Icons.remove),
-      ),
+      child: isCircle
+          ? Icon(icon, size: 28, color: const Color(0xFF333333))
+          : Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+              child: Row(
+                children: [
+                  Icon(icon, size: 24, color: const Color(0xFF333333)),
+                  const SizedBox(width: 8),
+                  Text(
+                    label,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w600,
+                      color: Color(0xFF333333),
+                    ),
+                  ),
+                ],
+              ),
+            ),
     );
   }
 }
