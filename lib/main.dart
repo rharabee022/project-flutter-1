@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
-// 1. Memanggil file tugas6.dart tempat halaman login LinkedIn berada
-import 'tugas6.dart';
+import 'package:rhara_belajar1/tugas7.dart';
 
 void main() {
   runApp(const ChizilishiApp());
@@ -20,7 +18,7 @@ class ChizilishiApp extends StatelessWidget {
         useMaterial3: true,
       ),
       // 2. Menampilkan LinkedInLoginPage sebagai halaman utama
-      home: const LinkedInLoginPage(),
+      home: const Tugas7Day15(),
     );
   }
 }
