@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-//MODEL CLASS
+//Model Class
+
 class MakeupService {
   final String serviceName;
   final String description;
@@ -18,7 +19,7 @@ class Tugas9Screen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Nama Tipe/Jenis Makeup
+    // data layanan
 
     final List<String> servicesLevel1 = [
       'Wedding Makeup',
@@ -33,8 +34,6 @@ class Tugas9Screen extends StatelessWidget {
       'Eyelash Extension & Lift'
     ];
 
-    // LEVEL 2 DATA: List of Map (Nama Layanan & Ikon Pendukung)
-
     final List<Map<String, dynamic>> servicesLevel2 = [
       {'name': 'Wedding Makeup', 'icon': Icons.favorite},
       {'name': 'Pre-Wedding Makeup', 'icon': Icons.camera_roll},
@@ -48,227 +47,311 @@ class Tugas9Screen extends StatelessWidget {
       {'name': 'Eyelash Extension & Lift', 'icon': Icons.remove_red_eye},
     ];
 
-    // LEVEL 3 DATA: List of Object Model (Menggunakan Gambar Aset Lokal)
     final List<MakeupService> makeupServices = [
       MakeupService(
-        serviceName: 'Flawless Wedding Makeup',
-        description:
-            'Riasan pengantin premium yang tahan lama, manglingi, dan camera-ready sepanjang hari.',
-        assetPath: 'assets/images/wedding.jpg', // cari file namanya wedding.jpg
-      ),
+          serviceName: 'Wedding Makeup',
+          description: 'Riasan pengantin, look internasional',
+          assetPath: 'assets/images/wedding.jpg'),
       MakeupService(
-        serviceName: 'Pre-Wedding Cinematic Look',
-        description:
-            'Makeup khusus foto/video outdoor maupun indoor dengan ketahanan tinggi terhadap cuaca.',
-        assetPath:
-            'assets/images/prewedding.jpg', // cari file namanya prewedding.jpg
-      ),
+          serviceName: 'Pre-Wedding Look',
+          description: 'Makeup khusus foto outdoor/indoor tahan cuaca.',
+          assetPath: 'assets/images/prewedding.jpg'),
       MakeupService(
-        serviceName: 'Glamour Party Makeup',
-        description:
-            'Tampilan bold atau glam untuk menghadiri pesta, gala dinner, maupun acara formal malam hari.',
-        assetPath: 'assets/images/party.jpg', // cari file namanya party.jpg
-      ),
+          serviceName: 'Glamour Party',
+          description: 'Tampilan bold atau glam untuk menghadiri pesta formal.',
+          assetPath: 'assets/images/party.jpg'),
       MakeupService(
-        serviceName: 'Graduation (Wisuda) Fresh Look',
-        description:
-            'Riasan segar, awet muda, dan bebas minyak (matte) untuk momen kelulusanmu.',
-        assetPath:
-            'assets/images/graduation.jpg', // cari file namanya graduation.jpg
-      ),
+          serviceName: 'Graduation Fresh',
+          description:
+              'Riasan segar, awet muda, dan bebas minyak untuk wisuda.',
+          assetPath: 'assets/images/graduation.jpg'),
       MakeupService(
-        serviceName: 'Elegant Engagement Makeup',
-        description:
-            'Makeup soft glam yang memancarkan aura anggun di hari pertunangan atau lamaran.',
-        assetPath:
-            'assets/images/engagement.jpg', // cari file namanya engagement.jpg
-      ),
+          serviceName: 'Elegant Engagement',
+          description: 'Makeup soft glam anggun di hari lamaran pernikahan.',
+          assetPath: 'assets/images/engagement.jpg'),
       MakeupService(
-        serviceName: 'Editorial & Fashion Photoshoot',
-        description:
-            'Makeup konseptual berestetika tinggi untuk kebutuhan komersial, majalah, atau portofolio.',
-        assetPath:
-            'assets/images/photoshoot.jpg', // cari file namanya photoshoot.jpg
-      ),
+          serviceName: 'Editorial Fashion',
+          description: 'Makeup konseptual estetika tinggi untuk photoshoot.',
+          assetPath: 'assets/images/photoshoot.jpg'),
       MakeupService(
-        serviceName: 'Daily / No-Makeup Look',
-        description:
-            'Riasan super natural yang mempertegas fitur wajah asli untuk acara santai sehari-hari.',
-        assetPath: 'assets/images/daily.jpg', // cari file namanya daily.jpg
-      ),
+          serviceName: 'Daily Natural Look',
+          description: 'Riasan super natural mempertegas fitur wajah asli.',
+          assetPath: 'assets/images/daily.jpg'),
       MakeupService(
-        serviceName: 'Stage & Performance Makeup',
-        description:
-            'Makeup dengan pigmentasi kontras tinggi agar wajah tetap berkarakter di bawah lampu panggung.',
-        assetPath: 'assets/images/stage.jpg', // cari file namanya stage.jpg
-      ),
+          serviceName: 'Stage Performance',
+          description:
+              'Makeup pigmentasi kontras tinggi untuk sorot lampu panggung.',
+          assetPath: 'assets/images/stage.jpg'),
       MakeupService(
-        serviceName: 'Traditional Adat Makeup',
-        description:
-            'Riasan pakem pengantin adat Nusantara (Jawa, Sunda, Minang, dll) yang anggun dan sakral.',
-        assetPath: 'assets/images/adat.jpg', // cari file namanya adat.jpg
-      ),
+          serviceName: 'Traditional Adat',
+          description: 'Riasan pakem pengantin adat Nusantara yang sakral.',
+          assetPath: 'assets/images/adat.jpg'),
       MakeupService(
-        serviceName: 'Studio Eyelash & Brow Lift',
-        description:
-            'Treatment pelengkap untuk menyempurnakan bentuk alis dan bulu mata agar mata terlihat hidup.',
-        assetPath: 'assets/images/eyelash.jpg', // cari file namanya eyelash.jpg
-      ),
+          serviceName: 'Eyelash Studio',
+          description: 'Treatment bulu mata agar mata terlihat lebih hidup.',
+          assetPath: 'assets/images/eyelash.jpg'),
     ];
 
-    return DefaultTabController(
-      length: 3,
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text('MUA Service Menu'),
-          backgroundColor: Colors.pink[300],
-          bottom: const TabBar(
-            indicatorColor: Colors.white,
-            tabs: [
-              Tab(text: 'Level 1\n(Tipe Makeup)'),
-              Tab(text: 'Level 2\n(Dengan Ikon)'),
-              Tab(text: 'Level 3\n(Katalog Jasa)'),
-            ],
-          ),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          'Kaeri Dashboard Menu',
+          style: TextStyle(fontWeight: FontWeight.w500),
         ),
-        body: TabBarView(
-          children: [
-            // List Sederhana
-
-            ListView.builder(
-              itemCount: servicesLevel1.length,
-              itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(servicesLevel1[index]),
-                  trailing: const Icon(Icons.keyboard_arrow_right,
-                      color: Colors.grey),
-                );
-              },
-            ),
-
-            // List of Map
-
-            ListView.builder(
-              itemCount: servicesLevel2.length,
-              itemBuilder: (context, index) {
-                final item = servicesLevel2[index];
-                return ListTile(
-                  leading: CircleAvatar(
-                    backgroundColor: Colors.pink[50],
-                    child: Icon(item['icon'], color: Colors.pink[300]),
-                  ),
-                  title: Text(item['name']),
-                  trailing:
-                      const Icon(Icons.bookmark_border, color: Colors.pink),
-                );
-              },
-            ),
-
-            // UI LEVEL 3: Pendekatan Model (Professional Level)
-
-            ListView.builder(
-              padding: const EdgeInsets.all(12),
-              itemCount: makeupServices.length,
-              itemBuilder: (context, index) {
-                // Custom Widget
-                return ServiceCardItem(service: makeupServices[index]);
-              },
-            ),
-          ],
-        ),
+        backgroundColor: Colors.pink[300],
+        foregroundColor: Colors.white,
+        centerTitle: true,
       ),
-    );
-  }
-}
-
-// Custom widget
-
-class ServiceCardItem extends StatelessWidget {
-  final MakeupService service;
-
-  const ServiceCardItem({super.key, required this.service});
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      elevation: 2,
-      margin: const EdgeInsets.only(bottom: 16),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      body: ListView(
+        padding: const EdgeInsets.all(16),
         children: [
-          // Gambar Layanan dari Aset Lokal (Folder Proyek)
-          ClipRRect(
-            borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(16),
-              topRight: Radius.circular(16),
+          // Tipe Makeup
+
+          Container(
+            margin: const EdgeInsets.only(bottom: 20),
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(16),
+              border: Border.all(color: Colors.pink[100]!, width: 1.5),
             ),
-            child: Image.asset(
-              service.assetPath, // manggil path lokal dari model data
-              width: double.infinity,
-              height: 160,
-              fit: BoxFit.cover,
-              // kalo gambar belum diunduh / tidak ditemukan, tampilkan placeholder abu-abu agar tidak error crashs
-              errorBuilder: (context, error, stackTrace) {
-                return Container(
-                  width: double.infinity,
-                  height: 160,
-                  color: Colors.grey[200],
-                  child: const Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(Icons.image_not_supported,
-                          color: Colors.grey, size: 40),
-                      SizedBox(height: 4),
-                      Text(
-                        'Gambar belum dimasukkan ke folder assets',
-                        style: TextStyle(color: Colors.grey, fontSize: 12),
-                      )
-                    ],
-                  ),
-                );
-              },
-            ),
-          ),
-          // Detail Layanan di bawah Gambar
-          Padding(
-            padding: const EdgeInsets.all(16.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  service.serviceName,
-                  style: const TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black87,
-                  ),
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  service.description,
-                  style: TextStyle(
-                    fontSize: 13,
-                    color: Colors.grey[600],
-                    height: 1.4,
-                  ),
+                // Judul di dalam kotak
+                Row(
+                  children: [
+                    Icon(Icons.stars, color: Colors.pink[400]),
+                    const SizedBox(width: 8),
+                    const Text(
+                      'Tipe Layanan Makeup',
+                      style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black87),
+                    ),
+                  ],
                 ),
                 const SizedBox(height: 12),
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: ElevatedButton.icon(
-                    onPressed: () {},
-                    icon: const Icon(Icons.calendar_month, size: 16),
-                    label: const Text('Book Now'),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.pink[300],
-                      foregroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                    ),
+                // List Horizontal
+                SizedBox(
+                  height: 45,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: servicesLevel1.length,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        margin: const EdgeInsets.only(right: 10),
+                        padding: const EdgeInsets.symmetric(horizontal: 14),
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          color: Colors.pink[50],
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        child: Text(
+                          servicesLevel1[index],
+                          style: TextStyle(
+                              color: Colors.pink[700],
+                              fontSize: 12,
+                              fontWeight: FontWeight.w500),
+                        ),
+                      );
+                    },
                   ),
-                )
+                ),
+              ],
+            ),
+          ),
+
+          // LEVEL 2
+          Container(
+            margin: const EdgeInsets.only(bottom: 20),
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(16),
+              border: Border.all(color: Colors.pink[100]!, width: 1.5),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Title / Judul di dalam kotak
+                Row(
+                  children: [
+                    Icon(Icons.check_circle, color: Colors.pink[400]),
+                    const SizedBox(width: 8),
+                    const Text(
+                      'Checklist Booking',
+                      style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black87),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 12),
+                // List Horizontal
+                SizedBox(
+                  height: 60,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: servicesLevel2.length,
+                    itemBuilder: (context, index) {
+                      final item = servicesLevel2[index];
+                      return Container(
+                        width: 180,
+                        margin: const EdgeInsets.only(right: 10),
+                        padding: const EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          color: Colors.grey[50],
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(color: Colors.grey[200]!),
+                        ),
+                        child: Row(
+                          children: [
+                            Icon(item['icon'],
+                                color: Colors.pink[300], size: 18),
+                            const SizedBox(width: 8),
+                            Expanded(
+                              child: Text(
+                                item['name'],
+                                style: const TextStyle(
+                                    fontSize: 11, fontWeight: FontWeight.w500),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          // Level 3: Katalog
+          Container(
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(16),
+              border: Border.all(color: Colors.pink[100]!, width: 1.5),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Title / Judul di dalam kotak
+                Row(
+                  children: [
+                    Icon(Icons.collections, color: Colors.pink[400]),
+                    const SizedBox(width: 8),
+                    const Text(
+                      'Katalog Foto & Detail Jasa',
+                      style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black87),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 12),
+                // List Horizontal Kartu Gambar
+                SizedBox(
+                  height: 240,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: makeupServices.length,
+                    itemBuilder: (context, index) {
+                      final service = makeupServices[index];
+                      return Container(
+                        width: 150,
+                        margin: const EdgeInsets.only(right: 12),
+                        child: Card(
+                          elevation: 2,
+                          margin: EdgeInsets.zero,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12)),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const SizedBox(height: 12),
+                              ClipRRect(
+                                borderRadius: const BorderRadius.only(
+                                    topLeft: Radius.circular(12),
+                                    topRight: Radius.circular(12)),
+                                child: Image.asset(
+                                  service.assetPath,
+                                  width: double.infinity,
+                                  height: 100,
+                                  fit: BoxFit.fitHeight,
+                                  errorBuilder: (context, error, stackTrace) {
+                                    return Container(
+                                      width: double.infinity,
+                                      height: 100,
+                                      color: Colors.grey[200],
+                                      child: const Icon(
+                                          Icons.image_not_supported,
+                                          color: Colors.grey),
+                                    );
+                                  },
+                                ),
+                              ),
+                              Expanded(
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        service.serviceName,
+                                        style: const TextStyle(
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.bold),
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                      const SizedBox(height: 2),
+                                      Text(
+                                        service.description,
+                                        style: TextStyle(
+                                            fontSize: 12,
+                                            color: Colors.grey[600],
+                                            height: 1.2),
+                                        maxLines: 2,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                      const Spacer(),
+                                      SizedBox(
+                                        width: double.infinity,
+                                        height: 24,
+                                        child: ElevatedButton(
+                                          onPressed: () {},
+                                          style: ElevatedButton.styleFrom(
+                                            backgroundColor: Colors.pink[300],
+                                            foregroundColor: Colors.white,
+                                            padding: EdgeInsets.zero,
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(6)),
+                                          ),
+                                          child: const Text('Book',
+                                              style: TextStyle(fontSize: 10)),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
               ],
             ),
           ),
