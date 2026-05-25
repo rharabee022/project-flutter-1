@@ -32,7 +32,11 @@ class _LinkedInLoginPageState extends State<Tugas10Login> {
   // Controller untuk mengambil data inputan
   final _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  //kalo ga pake final,
+  // yang tulisan final disini tinggal dihapus aja.
+  //tp leboh bagus pake final krn datanya ga mungkin berubah Ln 34
   final _kotaController = TextEditingController(); // Data Tambahan Wajib
+  final _hpController = TextEditingController(); // Data HP
 
   // Fungsi untuk menampilkan Dialog Konfirmasi
   void _showConfirmationDialog() {
@@ -49,6 +53,8 @@ class _LinkedInLoginPageState extends State<Tugas10Login> {
               Text('Email: ${_emailController.text}'),
               const SizedBox(height: 8),
               Text('Kota Asal: ${_kotaController.text}'),
+              const SizedBox(height: 8),
+              Text('No HP: ${_hpController.text}'),
               const SizedBox(height: 12),
               const Text('Udah bener belom ini data yang lu ketik?'),
             ],
@@ -69,6 +75,7 @@ class _LinkedInLoginPageState extends State<Tugas10Login> {
                     builder: (context) => HalamanKonfirmasi(
                       email: _emailController.text,
                       kota: _kotaController.text,
+                      hp: _hpController.text,
                     ),
                   ),
                 );
@@ -228,6 +235,32 @@ class _LinkedInLoginPageState extends State<Tugas10Login> {
                 ),
                 const SizedBox(height: 16),
 
+                // No HP
+                TextFormField(
+                  controller: _hpController,
+                  keyboardType:
+                      TextInputType.phone, // Memunculkan keyboard angka/telepon
+                  decoration: InputDecoration(
+                    labelText: 'Silakan Isi Nomor Hp *',
+                    labelStyle: const TextStyle(color: Colors.grey),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8),
+                      borderSide: const BorderSide(color: Colors.grey),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8),
+                      borderSide: const BorderSide(color: Colors.black),
+                    ),
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Nomer Handphone wajib diisi!';
+                    }
+                    return null;
+                  },
+                ),
+                const SizedBox(height: 16),
+
                 // Forgot Password
                 GestureDetector(
                   onTap: () {},
@@ -364,12 +397,14 @@ class _LinkedInLoginPageState extends State<Tugas10Login> {
 class HalamanKonfirmasi extends StatelessWidget {
   final String email;
   final String kota;
+  final String hp;
 
   // data dr page sblmnya
   const HalamanKonfirmasi({
     super.key,
     required this.email,
     required this.kota,
+    required this.hp,
   });
 
   @override
@@ -391,7 +426,7 @@ class HalamanKonfirmasi extends StatelessWidget {
               const SizedBox(height: 24),
               Text(
                 //
-                'Cie daftar nich, tengkyu ya $email dari $kota udah daftar.',
+                'Cie daftar nich, tengkyu ya $email dari $kota (HP: $hp) udah daftar.',
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                     fontSize: 18,
