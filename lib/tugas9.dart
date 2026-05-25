@@ -135,24 +135,24 @@ class Tugas9Screen extends StatelessWidget {
                 const SizedBox(height: 12),
                 // List Horizontal
                 SizedBox(
-                  height: 45,
+                  height: 60,
                   child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
+                    scrollDirection: Axis.vertical,
                     itemCount: servicesLevel1.length,
                     itemBuilder: (context, index) {
                       return Container(
-                        margin: const EdgeInsets.only(right: 10),
-                        padding: const EdgeInsets.symmetric(horizontal: 14),
+                        margin: const EdgeInsets.all(10),
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
                           color: Colors.pink[50],
-                          borderRadius: BorderRadius.circular(30),
+                          borderRadius: BorderRadius.circular(5),
                         ),
                         child: Text(
                           servicesLevel1[index],
                           style: TextStyle(
                               color: Colors.pink[700],
-                              fontSize: 12,
+                              fontSize: 20,
                               fontWeight: FontWeight.w500),
                         ),
                       );
