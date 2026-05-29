@@ -39,7 +39,8 @@ class Halaman2 extends StatelessWidget {
       ),
       body: const Center(
         child: Text(
-          'Selamat Datang di Aplikasi Chizilishi!',
+          'Selamat Datang di Aplikasi LinkedIn!',
+          textAlign: TextAlign.center,
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
       ),
