@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'database/prefrence_handler.dart'; // Import pengelola memori HP dari materi PDF
+import 'halaman2.dart'; // Import halaman tujuan setelah berhasil masuk
+
 class LinkedInLoginPage extends StatefulWidget {
   const LinkedInLoginPage({super.key});
 
@@ -36,7 +39,7 @@ class _LinkedInLoginPageState extends State<LinkedInLoginPage> {
                       horizontal: 4,
                       vertical: 2,
                     ),
-                    decoration: BoxDecoration(color: const Color(0xFF0A66C2)),
+                    decoration: const BoxDecoration(color: Color(0xFF0A66C2)),
                     child: const Text(
                       'in',
                       style: TextStyle(
@@ -50,7 +53,7 @@ class _LinkedInLoginPageState extends State<LinkedInLoginPage> {
               ),
               const SizedBox(height: 32),
 
-              // Judul
+              // Judul Halaman
               const Text(
                 'Sign in',
                 style: TextStyle(
@@ -129,12 +132,20 @@ class _LinkedInLoginPageState extends State<LinkedInLoginPage> {
               ),
               const SizedBox(height: 24),
 
-              // Tombol Sign In
               SizedBox(
                 width: double.infinity,
                 height: 50,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () async {
+                    await PreferenceHandler.setLogin(true);
+
+                    if (!context.mounted) return;
+
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => const Halaman2()),
+                    );
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF1B76FF),
                     shape: RoundedRectangleBorder(
@@ -152,6 +163,7 @@ class _LinkedInLoginPageState extends State<LinkedInLoginPage> {
                   ),
                 ),
               ),
+
               const SizedBox(height: 24),
 
               // Divider "or"
@@ -165,9 +177,8 @@ class _LinkedInLoginPageState extends State<LinkedInLoginPage> {
                   Expanded(child: Divider(color: Colors.grey)),
                 ],
               ),
-              const SizedBox(height: 24),
 
-              // Tombol Google
+              const SizedBox(height: 24),
               SizedBox(
                 width: double.infinity,
                 height: 50,
@@ -185,7 +196,7 @@ class _LinkedInLoginPageState extends State<LinkedInLoginPage> {
                       Icon(Icons.g_mobiledata, color: Colors.red, size: 30),
                       SizedBox(width: 8),
                       Text(
-                        'Continue with Google',
+                        'Continue with Gugel',
                         style: TextStyle(color: Colors.black87, fontSize: 16),
                       ),
                     ],
@@ -194,7 +205,6 @@ class _LinkedInLoginPageState extends State<LinkedInLoginPage> {
               ),
               const SizedBox(height: 16),
 
-              // Tombol Apple
               SizedBox(
                 width: double.infinity,
                 height: 50,
@@ -212,7 +222,7 @@ class _LinkedInLoginPageState extends State<LinkedInLoginPage> {
                       Icon(Icons.apple, color: Colors.black, size: 24),
                       SizedBox(width: 8),
                       Text(
-                        'Sign in with Apple',
+                        'Sign in with Apel',
                         style: TextStyle(color: Colors.black87, fontSize: 16),
                       ),
                     ],
@@ -224,13 +234,13 @@ class _LinkedInLoginPageState extends State<LinkedInLoginPage> {
               // Bagian Join Now
               Center(
                 child: RichText(
-                  text: TextSpan(
+                  text: const TextSpan(
                     text: 'New to LinkedIn? ',
-                    style: const TextStyle(color: Colors.black54, fontSize: 16),
+                    style: TextStyle(color: Colors.black54, fontSize: 16),
                     children: [
                       TextSpan(
                         text: 'Join now',
-                        style: const TextStyle(
+                        style: TextStyle(
                           color: Color(0xFF0A66C2),
                           fontWeight: FontWeight.bold,
                         ),

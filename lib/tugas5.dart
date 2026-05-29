@@ -73,10 +73,10 @@ class KaeriLoginPage extends StatelessWidget {
                   Text(
                     'WORKSPACE',
                     style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                      letterSpacing: 2.0,
-                      fontWeight: FontWeight.w500,
-                      color: const Color(0xFF8C4D42),
-                    ),
+                          letterSpacing: 2.0,
+                          fontWeight: FontWeight.w500,
+                          color: const Color(0xFF8C4D42),
+                        ),
                   ),
                   const SizedBox(height: 4),
                   Text(

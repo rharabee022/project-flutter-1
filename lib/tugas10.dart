@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'database/prefrence_handler.dart';
+import 'database/splash_screen.dart';
+
 void main() {
   runApp(const Tugas10());
 }
@@ -65,18 +68,17 @@ class _LinkedInLoginPageState extends State<Tugas10Login> {
               child: const Text('Batal', style: TextStyle(color: Colors.grey)),
             ),
             ElevatedButton(
-              onPressed: () {
+              onPressed: () async {
                 Navigator.pop(context); // Tutup dialog
 
-                // Navigasi ke Halaman Konfirmasi membawa data dr sblmnya
-                Navigator.push(
+                await PreferenceHandler.setLogin(true);
+
+                if (!context.mounted) return;
+
+                Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => HalamanKonfirmasi(
-                      email: _emailController.text,
-                      kota: _kotaController.text,
-                      hp: _hpController.text,
-                    ),
+                    builder: (context) => const SplashScreen(),
                   ),
                 );
               },

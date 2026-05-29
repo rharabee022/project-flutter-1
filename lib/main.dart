@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:rhara_belajar1/tugas10.dart';
 
-void main() {
+import 'database/prefrence_handler.dart';
+import 'tugas10.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await PreferenceHandler.init();
+
   runApp(const ChizilishiApp());
 }
 
@@ -17,7 +22,6 @@ class ChizilishiApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.pink),
         useMaterial3: true,
       ),
-      // 2. Menampilkan LinkedInLoginPage sebagai halaman utama
       home: const Tugas10Login(),
     );
   }
