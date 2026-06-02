@@ -1,28 +1,25 @@
 import 'package:flutter/material.dart';
 
-import 'database/prefrence_handler.dart';
-import 'tugas10.dart';
+import 'tugas_11/login_screen.dart'; // Sesuaikan folder
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await PreferenceHandler.init();
-
-  runApp(const ChizilishiApp());
+  runApp(const KaeriApp());
 }
 
-class ChizilishiApp extends StatelessWidget {
-  const ChizilishiApp({super.key});
+class KaeriApp extends StatelessWidget {
+  const KaeriApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Chizilishi App',
+      title: 'Kaeri Workspace',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.pink),
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFFFF1493)),
         useMaterial3: true,
       ),
-      home: const Tugas10Login(),
+      home: const LoginScreenKaeri(),
     );
   }
 }
