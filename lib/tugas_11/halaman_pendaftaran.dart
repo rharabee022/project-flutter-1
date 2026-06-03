@@ -83,77 +83,92 @@ class _HalamanPendaftaranState extends State<HalamanPendaftaran> {
         backgroundColor: pinkFanta,
         foregroundColor: Colors.white,
       ),
-      body: Column(
-        children: [
-          Container(
-            padding: const EdgeInsets.all(20),
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(24),
-                  bottomRight: Radius.circular(24)),
-            ),
-            child: Form(
-              key: _formKey,
-              child: Column(
-                children: [
-                  TextFormField(
-                    controller: namaController,
-                    decoration: InputDecoration(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(20),
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(24),
+                    bottomRight: Radius.circular(24)),
+              ),
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  children: [
+                    TextFormField(
+                      controller: namaController,
+                      decoration: InputDecoration(
                         labelText: 'Nama Lengkap',
                         prefixIcon: const Icon(Icons.person),
+                        filled: true,
+                        fillColor: Colors.transparent,
                         border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12))),
-                    validator: (value) => value == null || value.isEmpty
-                        ? 'Nama wajib diisi'
-                        : null,
-                  ),
-                  const SizedBox(height: 16),
-                  TextFormField(
-                    controller: emailController,
-                    keyboardType: TextInputType.emailAddress,
-                    decoration: InputDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                      ),
+                      validator: (value) => value == null || value.isEmpty
+                          ? 'Nama wajib diisi'
+                          : null,
+                    ),
+                    const SizedBox(height: 16),
+                    TextFormField(
+                      controller: emailController,
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(
                         labelText: 'Email',
                         prefixIcon: const Icon(Icons.email),
+                        filled: true,
+                        fillColor: Colors.transparent,
                         border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12))),
-                    validator: (value) => value == null || value.isEmpty
-                        ? 'Email wajib diisi'
-                        : null,
-                  ),
-                  const SizedBox(height: 16),
-                  TextFormField(
-                    controller: hpController,
-                    keyboardType: TextInputType.phone,
-                    decoration: InputDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                      ),
+                      validator: (value) => value == null || value.isEmpty
+                          ? 'Email wajib diisi'
+                          : null,
+                    ),
+                    const SizedBox(height: 16),
+                    TextFormField(
+                      controller: hpController,
+                      keyboardType: TextInputType.phone,
+                      decoration: InputDecoration(
                         labelText: 'Nomor HP',
                         prefixIcon: const Icon(Icons.phone),
+                        filled: true,
+                        fillColor: Colors.transparent,
                         border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12))),
-                    validator: (value) => value == null || value.isEmpty
-                        ? 'HP wajib diisi'
-                        : null,
-                  ),
-                  const SizedBox(height: 16),
-                  TextFormField(
-                    controller: kotaController,
-                    decoration: InputDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                      ),
+                      validator: (value) => value == null || value.isEmpty
+                          ? 'HP wajib diisi'
+                          : null,
+                    ),
+                    const SizedBox(height: 16),
+                    TextFormField(
+                      controller: kotaController,
+                      decoration: InputDecoration(
                         labelText: 'Asal Kota',
                         prefixIcon: const Icon(Icons.location_city),
+                        filled: true,
+                        fillColor: Colors.transparent,
                         border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12))),
-                    validator: (value) => value == null || value.isEmpty
-                        ? 'Kota wajib diisi'
-                        : null,
-                  ),
-                  const SizedBox(height: 16),
-                  TextFormField(
-                    controller: passwordController,
-                    obscureText: !_isPasswordVisible,
-                    decoration: InputDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                      ),
+                      validator: (value) => value == null || value.isEmpty
+                          ? 'Kota wajib diisi'
+                          : null,
+                    ),
+                    const SizedBox(height: 16),
+                    TextFormField(
+                      controller: passwordController,
+                      obscureText: !_isPasswordVisible,
+                      decoration: InputDecoration(
                         labelText: 'Password',
                         prefixIcon: const Icon(Icons.lock),
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12)),
                         suffixIcon: IconButton(
                           icon: Icon(
                             _isPasswordVisible
@@ -163,52 +178,57 @@ class _HalamanPendaftaranState extends State<HalamanPendaftaran> {
                           ),
                           onPressed: () => setState(
                               () => _isPasswordVisible = !_isPasswordVisible),
-                        )),
-                    validator: (value) => value == null || value.isEmpty
-                        ? 'Password wajib diisi'
-                        : null,
-                  ),
-                  const SizedBox(height: 24),
-                  SizedBox(
-                    width: double.infinity,
-                    height: 50,
-                    child: ElevatedButton(
-                      onPressed: _simpanData,
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: pinkFanta,
-                          foregroundColor: Colors.white),
-                      child: const Text('SIMPAN DATA',
-                          style: TextStyle(fontWeight: FontWeight.bold)),
+                        ),
+                        filled: true,
+                        fillColor: Colors.transparent,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                      ),
+                      validator: (value) => value == null || value.isEmpty
+                          ? 'Password wajib diisi'
+                          : null,
                     ),
-                  ),
-                ],
+                    const SizedBox(height: 16),
+                    SizedBox(
+                      width: double.infinity,
+                      height: 50,
+                      child: ElevatedButton(
+                        onPressed: _simpanData,
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: pinkFanta,
+                            foregroundColor: Colors.white),
+                        child: const Text('SIMPAN DATA',
+                            style: TextStyle(fontWeight: FontWeight.bold)),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-          Expanded(
-            child: Padding(
+            Padding(
               padding: const EdgeInsets.all(16.0),
               child: FutureBuilder<List<UserModelSQL>>(
                 future: _futurePeserta,
                 builder: (context, snapshot) {
-                  // Jika masih loading
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return Center(
                         child: CircularProgressIndicator(color: pinkFanta));
-                  }
-                  // Jika terjadi error sistem
-                  else if (snapshot.hasError) {
+                  } else if (snapshot.hasError) {
                     return Center(
                         child: Text('Terjadi error: ${snapshot.error}'));
-                  }
-                  // Jika data kosong
-                  else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                  } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
                     return const Center(
-                        child: Text('Belum ada data member terdaftar.'));
+                        child: Padding(
+                      padding: EdgeInsets.all(20.0),
+                      child: Text('Belum ada data member terdaftar.'),
+                    ));
                   }
 
                   final data = snapshot.data!;
                   return ListView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
                     itemCount: data.length,
                     itemBuilder: (context, index) {
                       final peserta = data[index];
@@ -233,8 +253,8 @@ class _HalamanPendaftaranState extends State<HalamanPendaftaran> {
                 },
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
